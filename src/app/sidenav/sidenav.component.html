@@ -8,8 +8,8 @@
               Admission
             </mat-panel-title>
           </mat-expansion-panel-header>
-        <a mat-button style="text-align: left;">Add Student </a><br>
-        <a mat-button style="text-align: left;">View</a>
+        <a mat-button style="text-align: left;" routerLink="/add_student">Add Student </a><br>
+        <a mat-button style="text-align: left;" routerLink="/view_student">View</a>
         </mat-expansion-panel>
       </mat-accordion>
       <mat-accordion>
@@ -81,6 +81,6 @@
     </mat-list>
   </mat-drawer>
   <mat-drawer-content>
-    <app-main></app-main>
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -1,0 +1,21 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.example-container {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.example-sidenav-content {
+  overflow: scroll;
+  padding: 30px;
+}
+
+.example-sidenav {
+  width:15%;
+  overflow: scroll;
+  background-color: #303030;
+  box-shadow: 0 0 2px 0 black
+}

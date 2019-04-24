@@ -1,8 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
-
+@import "~bootstrap/dist/css/bootstrap.min.css";
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow: hidden;}
 
 ::-webkit-scrollbar {
   display: none;
+}
+
+span:focus {
+    outline: none;
+    border: 0;
+ }
+
+ button:focus {
+    outline: none;
+    border: 0;
+ }
+
+ a:focus {
+    outline: none;
+    border: 0;
+ }
+.but{
+  padding:8px;
+  padding-right: 10px;
+  padding-left:10px;
+  background-color:#03A9F4;
+  color:white !important ;
+  border-radius:4px;
+  margin-top:4px;
+  margin-bottom: 4px;
+  cursor: pointer;
+  transition: ease-out all 0.2s;
+}
+
+.but:hover{
+  background-color: #dbdbdb;
+  color: #03A9F4 !important;
 }

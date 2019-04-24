@@ -1,4 +1,44 @@
+<mat-toolbar style="background-color: #536DFE; color: white">
+  <button type="button" mat-button (click)="drawer.toggle()">
+    Menu
+  </button>&nbsp;
+    <span style="font-size:20px">Abhyas School</span>
+    <span class="example-spacer"></span>
+</mat-toolbar>
+<mat-drawer-container  class="example-container" autosize>
+  <mat-drawer #drawer opened='true' class="example-sidenav" mode="side">
+    <mat-accordion>
+      <mat-expansion-panel style="background-color:#e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#303030">
+          <mat-panel-title style="color:white">
+            Home
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%" routerLink="/dashboard">Dashboard</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#303030">
+          <mat-panel-title style="color:white">
+            Manage
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%" routerLink="/add_student">Add Students</button>
+        <button mat-button style="text-align: left; width:100%" routerLink="/view_student">Add Students</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-drawer>
 
-<app-toolbar></app-toolbar>
-<app-sidenav></app-sidenav>
-<router-outlet></router-outlet>
+  <div class="example-sidenav-content">
+    <div class="container-fluid">
+      <router-outlet></router-outlet>
+      <br>
+      <hr>
+    </div>
+  </div>
+
+</mat-drawer-container>
+<br>
