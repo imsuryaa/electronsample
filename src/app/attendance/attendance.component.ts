@@ -1,6 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, BaseChartDirective, Label } from 'ng2-charts';
+import { Label } from 'ng2-charts';
+import { StudentService } from '../student.service';
 
 
 @Component({
@@ -21,18 +22,33 @@ export class AttendanceComponent implements OnInit {
       }
     }
   };
-  public barChartLabels: Label[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartLabels: Label[] = ['2019'];
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
 
 
-  public barChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Girls' },
-    { data: [28, 48, 40, 19, 86, 27, 90], label: 'Boys' }
-  ];
-  constructor() { }
+  public barChartData: ChartDataSets[]
+  fem
+  male
+  constructor(private student : StudentService) {
+    var f = this.student.getCount({gender:'Female'})
+    f.subscribe(res => {
+      this.fem = res
+    })
+
+    var m = this.student.getCount({gender:'Male'})
+    m.subscribe(res => {
+      this.male = res
+      this.ngOnInit();
+    })
+
+  }
 
   ngOnInit() {
+    this.barChartData = [
+      { data: [this.fem], label: 'Girls' },
+      { data: [this.male], label: 'Boys' }
+    ];
   }
 
 }

@@ -1,0 +1,124 @@
+<p class="display-4">Generate Fee Receipt</p>
+<hr>
+<mat-card>
+  <p class="h5">Student Details</p>
+  <mat-divider></mat-divider>
+  <br>
+  <div class="row">
+    <div class="col">
+      <form [formGroup] = "r2c1">
+        <mat-form-field>
+         <input matInput placeholder="Admission No." formControlName="admission_no" required (change)="view()">
+       </mat-form-field>
+      </form>
+    </div>
+
+    <div class="col">
+      Student Name : <br>
+      <p class="heads">{{name}}</p>
+    </div>
+
+    <div class="col">
+      Class : <br>
+      <p class="heads">{{class}}</p>
+    </div>
+
+    <div class="col">
+      Section : <br>
+      <p class="heads">{{section}}</p>
+    </div>
+
+  </div>
+</mat-card>
+
+<br>
+<mat-card>
+  <p class="h5">Receipt Details</p>
+  <mat-divider></mat-divider>
+  <br>
+  <div class="row">
+    <div class="col">
+      <mat-form-field>
+        <mat-label>Select Term</mat-label>
+        <select matNativeControl [(ngModel)]="selectedTerm" [ngModelOptions]="{standalone: true}" name="term" (change)="somethingChanged()" [disabled]="data == null">
+          <option *ngFor="let term of terms" [value]="term">
+            {{term}}
+          </option>
+        </select>
+      </mat-form-field>
+    </div>
+    <div class="col">
+      <form [formGroup]="r1c1">
+        <mat-form-field>
+           <input matInput placeholder="Receipt No" formControlName="receipt_no" >
+        </mat-form-field>
+      </form>
+    </div>
+
+    <div class="col">
+      Date: <br>
+      <p class="heads">{{ date | date }}</p>
+    </div>
+
+    <div class="col">
+      Amount (Rupees) : <br>
+      <p class="heads">{{ amount }}</p>
+    </div>
+
+
+  </div>
+
+  <div class="row">
+    <div class="col">
+      Amount (Rupees in words) : <br>
+      <p class="heads">{{ amount | words }}</p>
+    </div>
+  </div>
+</mat-card>
+
+<br>
+
+
+<mat-card>
+  <p class="h5">Fee Details</p>
+  <mat-divider></mat-divider>
+  <br>
+  <div class="row">
+    <div class="col">
+      Tution Fee : <br>
+      Caution Deposit : <br>
+      Hostel Fee : <br>
+      Transportation Fee : <br>
+      Fines/Dues : <br>
+      Concession : <hr>
+      <b>Total :</b>
+    </div>
+
+    <div class="col">
+      9000.00 <br>
+      0.00 <br>
+      0.00 <br>
+      0.00 <br>
+      0.00 <br>
+      <ng-container *ngIf="selectedTerm === 'Term 3'">
+        (-{{data.consession}}.00) <hr>
+      </ng-container>
+      <ng-container *ngIf="selectedTerm !== 'Term 3'">
+        0.00 <hr>
+      </ng-container>
+      <b>{{amount}}.00</b>
+    </div>
+
+  </div>
+</mat-card>
+<br>
+<mat-card>
+  <div class="row">
+    <div class="col">
+      <a class='but' (click)="generate()">Generate</a>
+    </div>
+    <div class="col">
+      <a class='but' (click)="print()">Print</a>
+    </div>
+  </div>
+  </mat-card>

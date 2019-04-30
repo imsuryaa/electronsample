@@ -1,0 +1,72 @@
+<p class="display-4">View Fee Receipt</p>
+<hr>
+<mat-card>
+  <p class="h5">Receipt Details</p>
+  <mat-divider></mat-divider>
+  <br>
+  <div class="row">
+    <div class="col">
+      <form [formGroup] = "r1c1">
+        <mat-form-field>
+         <input matInput placeholder="Receipt No." formControlName="receipt_no" required>
+       </mat-form-field>
+       &nbsp;
+       <div>
+         <a class="but" (click)='search()'>View</a>
+       </div>
+      </form>
+    </div>
+
+    <div class="col">
+
+    </div>
+
+    <div class="col">
+
+    </div>
+
+    <div class="col">
+
+    </div>
+
+  </div>
+</mat-card>
+
+<br>
+<mat-card>
+  <p class="h5">Receipts</p>
+  <mat-divider></mat-divider>
+  <br>
+  <table>
+  <tr style="color: white; background-color:#536DFE; font-size:20px;">
+    <th>Receipt No.</th>
+    <th>Date</th>
+    <th>Admission No.</th>
+    <th>Name</th>
+    <th>Cls & Sec</th>
+    <th>Father Name</th>
+    <th>Status</th>
+    <th>Amount</th>
+    <th>Paid On</th>
+    <th>Paid By</th>
+    <th>Actions</th>
+  </tr>
+  <br>
+
+  <ng-container *ngFor="let key of rKeys">
+    <tr>
+      <td>{{receipts[key].receipt_no}}</td>
+      <td>{{receipts[key].generated_on | date}}</td>
+      <td>{{receipts[key].admission_no}}</td>
+      <td>{{students[key].name}}</td>
+      <td>{{students[key].class}}</td>
+      <td>{{students[key].father}}</td>
+      <td>{{receipts[key].status}}</td>
+      <td>{{receipts[key].amount}}</td>
+      <td>{{receipts[key].paid_on | date}}</td>
+      <td>{{receipts[key].paid_through}}</td>
+      <th><div style="padding:4px" ><a *ngIf="receipts[key].status !== 'Paid'" class="but" (click)='pay(receipts[key].receipt_no)'>Pay</a></div></th>
+    </tr>
+  </ng-container>
+  </table>
+  </mat-card>

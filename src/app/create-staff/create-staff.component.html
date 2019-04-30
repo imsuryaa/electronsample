@@ -1,0 +1,147 @@
+<p class='display-4'>Staff Admission</p>
+<hr>
+<mat-card>
+  <p class="h3">Staff Information</p>
+  <mat-divider></mat-divider>
+  <br>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <form [formGroup]='r1c1'>
+            <mat-form-field>
+             <input matInput placeholder="Staff ID" formControlName="admission_no" required >
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="First Name" formControlName="fName" required>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <mat-label>Category</mat-label>
+             <select matNativeControl [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}" name="category">
+
+               <option *ngFor="let category of categories" [value]="category">
+                 {{category}}
+               </option>
+             </select>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="Date of Joining" formControlName="as_on" required>
+           </mat-form-field>
+          </form>
+        </div>
+
+        <div class="col">
+          <form [formGroup]='r1c2'>
+           <mat-form-field>
+             <input matInput placeholder="Last Name" formControlName="lName" required>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="Religion" formControlName="religion" required>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="Photo" formControlName="photo" required>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="Email" formControlName="email" required>
+           </mat-form-field>
+          </form>
+        </div>
+
+        <div class="col">
+          <form [formGroup]='r1c3'>
+           <mat-form-field>
+             <mat-label>Gender</mat-label>
+             <select matNativeControl [(ngModel)]="selectedGender" [ngModelOptions]="{standalone: true}" name="gender">
+
+               <option *ngFor="let gender of genders" [value]="gender">
+                 {{gender}}
+               </option>
+             </select>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="Mobile No" formControlName="phone">
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <mat-label>Blood Group</mat-label>
+             <select matNativeControl [(ngModel)]="selectedBloodGroup" [ngModelOptions]="{standalone: true}" name="bloodGroup">
+
+               <option *ngFor="let group of bloodGroups" [value]="group">
+                 {{group}}
+               </option>
+             </select>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <input matInput placeholder="Date Of Birth" formControlName="dob" required>
+           </mat-form-field>
+          </form>
+        </div>
+
+        <div class="col" style="text-align:center">
+          <div style="display:inline-block">
+            <br>
+            <img src="https://i.pinimg.com/736x/ea/8d/69/ea8d69f8a602d2085db3564fc2e1aa5e--corporate-photography-headshot-photography.jpg" width="120px" height="160px">
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+</mat-card>
+<br>
+
+<mat-card>
+  <p class="h3">Upload Identity Proof</p>
+  <mat-divider></mat-divider>
+  <br>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field>
+            <mat-label>Id Proof</mat-label>
+            <select matNativeControl [(ngModel)]="selectedStudentIdProof" [ngModelOptions]="{standalone: true}" name="verifications">
+
+              <option *ngFor="let verification of verifications" [value]="verification">
+                {{verification}}
+              </option>
+            </select>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <mat-label>Address Proof</mat-label>
+            <select matNativeControl [(ngModel)]="selectedStudentAddressProof" [ngModelOptions]="{standalone: true}" name="verifications">
+
+              <option *ngFor="let verification of verifications" [value]="verification">
+                {{verification}}
+              </option>
+            </select>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <form [formGroup]='student'>
+            <br>
+             <input placeholder="Upload" formControlName="sdoc1" type='file' required name="sdoc1" (change)="onFileChanged($event)" >
+             <a class='but' (click)='upload()'>Upload</a>
+           <br>
+           <br>
+           <input placeholder="Upload" formControlName="sdoc2" type='file' required name="sdoc2" (change)="onFileChanged($event)" >
+           <a class='but' (click)='upload()'>Upload</a>
+          </form>
+        </div>
+      </div>
+      </mat-card-content>
+</mat-card>
+<br>
+<mat-card>
+  <div class="row">
+    <div class="col">
+      <a class="but" (click)='save()'>Save</a>
+    </div>
+  </div>
+</mat-card>

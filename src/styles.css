@@ -21,20 +21,45 @@ span:focus {
     outline: none;
     border: 0;
  }
+
 .but{
   padding:8px;
   padding-right: 10px;
   padding-left:10px;
-  background-color:#03A9F4;
+  background-color:#536DFE;
   color:white !important ;
   border-radius:4px;
   margin-top:4px;
   margin-bottom: 4px;
   cursor: pointer;
+  font-size: 11px;
   transition: ease-out all 0.2s;
 }
 
 .but:hover{
-  background-color: #dbdbdb;
-  color: #03A9F4 !important;
+  background-color: #424242;
+  color: #536DFE !important;
+}
+
+a{
+  text-decoration: none;
+  color:#212121;
+}
+
+a:hover{
+  color:#212121;
+  text-decoration:none
+}
+
+app-root{
+  overflow: hidden;
+}
+app-print{
+  display:none
+}
+
+@media print {
+  app-print{
+    display: block;
+  }
 }

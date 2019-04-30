@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './main/main.component';
-import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule } from '@angular/material';
+import { MatGridListModule, MatCardModule, MatMenuModule, MatIconModule, MatButtonModule, MatDialogModule} from '@angular/material';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatInputModule } from '@angular/material/input';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -23,6 +23,20 @@ import { ViewStudentComponent } from './view-student/view-student.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatRadioModule} from '@angular/material/radio';
+import { GenerateReceiptComponent } from './generate-receipt/generate-receipt.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ViewComponent } from './view/view.component';
+import { WordsPipe } from './words.pipe';
+import { PrintComponent } from './print/print.component';
+import { ViewReceiptComponent } from './view-receipt/view-receipt.component';
+import { PayDialogComponent } from './pay-dialog/pay-dialog.component'
+import { MyInterceptor } from './interceptor/http-interceptor';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { MessageSnackbarComponent } from './message-snackbar/message-snackbar.component';
+import { CreateExaminationComponent } from './create-examination/create-examination.component';
+import { ViewExaminationComponent } from './view-examination/view-examination.component';
+import { ViewStaffComponent } from './view-staff/view-staff.component';
+import { CreateStaffComponent } from './create-staff/create-staff.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +47,19 @@ import {MatRadioModule} from '@angular/material/radio';
     AttendanceComponent,
     AdmissionsComponent,
     CreateStudentComponent,
-    ViewStudentComponent
+    ViewStudentComponent,
+    GenerateReceiptComponent,
+    ViewComponent,
+    WordsPipe,
+    PrintComponent,
+    ViewReceiptComponent,
+    PayDialogComponent,
+    ErrorDialogComponent,
+    MessageSnackbarComponent,
+    CreateExaminationComponent,
+    ViewExaminationComponent,
+    ViewStaffComponent,
+    CreateStaffComponent
   ],
   imports: [
     BrowserModule,
@@ -55,9 +81,14 @@ import {MatRadioModule} from '@angular/material/radio';
     ChartsModule,
     MatFormFieldModule,
     MatRadioModule,
-    MatExpansionModule
+    MatExpansionModule,
+    HttpClientModule,
+    MatDialogModule
   ],
-  providers: [],
+  entryComponents:[ PayDialogComponent,ErrorDialogComponent ],
+  providers: [{provide: HTTP_INTERCEPTORS,
+      useClass: MyInterceptor,
+      multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

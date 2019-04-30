@@ -1,0 +1,87 @@
+<p class='display-4'>New Examination</p>
+<hr>
+<mat-card>
+  <p class="h4">Examination Details</p>
+  <mat-divider></mat-divider>
+  <br>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+           <mat-form-field>
+             <mat-label>Select Term</mat-label>
+             <select matNativeControl [(ngModel)]="selectedTerm" [ngModelOptions]="{standalone: true}" name="term">
+
+               <option *ngFor="let term of terms" [value]="term">
+                 {{term}}
+               </option>
+             </select>
+           </mat-form-field>
+        </div>
+
+        <div class="col">
+           <mat-form-field>
+             <mat-label>Select Examination</mat-label>
+             <select matNativeControl [(ngModel)]="selectedExamination" [ngModelOptions]="{standalone: true}" name="examination">
+
+               <option *ngFor="let examination of examinations" [value]="examination">
+                 {{examination}}
+               </option>
+             </select>
+           </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+</mat-card>
+
+<br>
+
+<ng-container>
+  <mat-card>
+    <p class="h4">Classes</p>
+    <mat-divider></mat-divider>
+    <br>
+      <mat-card-content>
+        <div class="row">
+          <div class="col">
+            <mat-radio-group [(ngModel)]="choice">
+              <mat-radio-button class="example-margin" value="after">Class 1st - 10th</mat-radio-button>
+              <mat-radio-button class="example-margin" value="before">Class 6th - 10th</mat-radio-button>
+              <mat-radio-button class="example-margin" value="before1">Class 9th - 10th</mat-radio-button>
+              <mat-radio-button class="example-margin" value="custom">Custom</mat-radio-button>
+            </mat-radio-group>
+          </div>
+        </div>
+        <ng-container *ngIf="choice === 'custom'">
+        <br>
+        <p class="h6">Select</p>
+        <div class="row">
+          <div class="col">
+            <section class="example-section">
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate10  ">Class 10th</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate1">Class 9th</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate2">Class 8th</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate3">Class 7th</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate4">Class 6th</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate5">Class 5th</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate6">Class 4th</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate7">Class 3rd</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate8">Class 2nd</mat-checkbox> <br>
+               <mat-checkbox class="example-margin" [(ngModel)]="indeterminate9">Class 1st</mat-checkbox> <br>
+             </section>
+          </div>
+        </div>
+        </ng-container>
+      </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<br>
+<mat-card>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <a class="but" (click)='create()'>Create</a>
+        </div>
+      </div>
+    </mat-card-content>
+</mat-card>

@@ -1,8 +1,9 @@
 <div class="row">
   <div class="col">
+    <p class="display-4">View Student</p>
+    <hr>
     <mat-card>
-      <mat-card-title>View Students</mat-card-title>
-        <ng-template matStepLabel>Company Title</ng-template>
+      <mat-card-title>Search</mat-card-title>
         <mat-form-field>
              <mat-label>Class</mat-label>
              <select matNativeControl [(ngModel)]="selectedClass" [ngModelOptions]="{standalone: true}" name="product">
@@ -13,8 +14,44 @@
              </select>
            </mat-form-field>
            <div>
-             <a class="but">View</a>
+             <a class="but" (click)='view()'>View</a>
            </div>
+    </mat-card>
+    <br>
+    <mat-card>
+      <mat-card-title>Students</mat-card-title>
+      <mat-divider></mat-divider>
+      <br>
+      <table>
+      <tr style="color: white; background-color:#536DFE; font-size:20px;">
+        <th>Admission No.</th>
+        <th>Name</th>
+        <th>DOB</th>
+        <th>Cls & Sec</th>
+        <th>Roll</th>
+        <th>Father Name</th>
+        <th>Mother Name</th>
+        <th>Guardian Name</th>
+        <th>DS/Hostel</th>
+        <th>Actions</th>
+      </tr>
+      <br>
+
+      <ng-container *ngFor="let key of keys">
+        <tr>
+          <td>{{data[key].admission_no}}</td>
+          <td>{{data[key].fName}} {{data[key].lName}}</td>
+          <td>{{data[key].dob | date}}</td>
+          <td>{{data[key].class}} ({{data[key].section}})</td>
+          <td>{{data[key].roll_no}}</td>
+          <td>{{data[key].father_name}}</td>
+          <td>{{data[key].mother_name}}</td>
+          <td>{{data[key].guardian_name}}</td>
+          <td>{{data[key].type}}</td>
+          <th><div style="padding:4px"><a class="but">Edit</a>&nbsp;<a class="but" (click)='view(key)'>Info</a>&nbsp;<a class="but" (click)='delete()'>Remove</a></div></th>
+        </tr>
+      </ng-container>
+      </table>
     </mat-card>
   </div>
 </div>

@@ -1,3 +1,5 @@
+<p class='display-4'>New Admission</p>
+<hr>
 <mat-card>
   <p class="h3">Student Information</p>
   <mat-divider></mat-divider>
@@ -7,7 +9,7 @@
         <div class="col">
           <form [formGroup]='r1c1'>
             <mat-form-field>
-             <input matInput placeholder="Admission Number" formControlName="admissionNo" required >
+             <input matInput placeholder="Admission Number" formControlName="admission_no" required >
            </mat-form-field>
            <br>
            <mat-form-field>
@@ -17,7 +19,7 @@
            <mat-form-field>
              <mat-label>Category</mat-label>
              <select matNativeControl [(ngModel)]="selectedCategory" [ngModelOptions]="{standalone: true}" name="category">
-               <option value="" selected></option>
+
                <option *ngFor="let category of categories" [value]="category">
                  {{category}}
                </option>
@@ -25,7 +27,7 @@
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Admission Date" formControlName="admissionDate" required>
+             <input matInput placeholder="Admission Date" formControlName="as_on" required>
            </mat-form-field>
            <br>
            <mat-form-field>
@@ -37,7 +39,7 @@
         <div class="col">
           <form [formGroup]='r1c2'>
             <mat-form-field>
-             <input matInput placeholder="Roll Number" formControlName="roll" required >
+             <input matInput placeholder="Roll Number" formControlName="roll_no" required >
            </mat-form-field>
            <br>
            <mat-form-field>
@@ -63,7 +65,7 @@
             <mat-form-field>
               <mat-label>Class</mat-label>
               <select matNativeControl [(ngModel)]="selectedClass" [ngModelOptions]="{standalone: true}" name="class">
-                <option value="" selected></option>
+
                 <option *ngFor="let class of classes" [value]="class">
                   {{class}}
                 </option>
@@ -73,7 +75,7 @@
            <mat-form-field>
              <mat-label>Gender</mat-label>
              <select matNativeControl [(ngModel)]="selectedGender" [ngModelOptions]="{standalone: true}" name="gender">
-               <option value="" selected></option>
+
                <option *ngFor="let gender of genders" [value]="gender">
                  {{gender}}
                </option>
@@ -87,7 +89,7 @@
            <mat-form-field>
              <mat-label>Blood Group</mat-label>
              <select matNativeControl [(ngModel)]="selectedBloodGroup" [ngModelOptions]="{standalone: true}" name="bloodGroup">
-               <option value="" selected></option>
+
                <option *ngFor="let group of bloodGroups" [value]="group">
                  {{group}}
                </option>
@@ -105,7 +107,7 @@
             <mat-form-field>
               <mat-label>Section</mat-label>
               <select matNativeControl [(ngModel)]="selectedSection" [ngModelOptions]="{standalone: true}" name="section">
-                <option value="" selected></option>
+
                 <option *ngFor="let section of sections" [value]="section">
                   {{section}}
                 </option>
@@ -123,9 +125,19 @@
            <mat-form-field>
              <mat-label>Student House</mat-label>
              <select matNativeControl [(ngModel)]="selectedHouse" [ngModelOptions]="{standalone: true}" name="house">
-               <option value="" selected></option>
+
                <option *ngFor="let house of houses" [value]="house">
                  {{house}}
+               </option>
+             </select>
+           </mat-form-field>
+           <br>
+           <mat-form-field>
+             <mat-label>Student Type</mat-label>
+             <select matNativeControl [(ngModel)]="selectedType" [ngModelOptions]="{standalone: true}" name="type" (change)='change()'>
+
+               <option *ngFor="let type of types" [value]="type">
+                 {{type}}
                </option>
              </select>
            </mat-form-field>
@@ -146,11 +158,11 @@
         <div class="col">
           <form [formGroup]='r2c1'>
             <mat-form-field>
-             <input matInput placeholder="Father Name" formControlName="father_name" required >
+             <input matInput placeholder="Father Name" formControlName="father_name">
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Mother Name" formControlName="mother_name" required>
+             <input matInput placeholder="Mother Name" formControlName="mother_name">
            </mat-form-field>
           </form>
         </div>
@@ -158,11 +170,11 @@
         <div class="col">
           <form [formGroup]='r2c2'>
             <mat-form-field>
-             <input matInput placeholder="Father Phone" formControlName="father_phone" required >
+             <input matInput placeholder="Father Phone" formControlName="father_phone">
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Mother Phone" formControlName="mother_phone" required>
+             <input matInput placeholder="Mother Phone" formControlName="mother_phone">
            </mat-form-field>
           </form>
         </div>
@@ -170,11 +182,11 @@
         <div class="col">
           <form [formGroup]='r2c3'>
             <mat-form-field>
-             <input matInput placeholder="Father Occupation" formControlName="father_occ" required >
+             <input matInput placeholder="Father Occupation" formControlName="father_occ">
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Mother Occupation" formControlName="mother_occ" required>
+             <input matInput placeholder="Mother Occupation" formControlName="mother_occ">
            </mat-form-field>
           </form>
         </div>
@@ -182,11 +194,11 @@
         <div class="col">
           <form [formGroup]='r2c4'>
             <mat-form-field>
-             <input matInput placeholder="Father Photo" formControlName="father_photo" required >
+             <input matInput placeholder="Father Photo" formControlName="father_photo">
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Mother Photo" formControlName="mother_photo" required>
+             <input matInput placeholder="Mother Photo" formControlName="mother_photo">
            </mat-form-field>
           </form>
         </div>
@@ -211,11 +223,11 @@
         <div class="col">
           <form [formGroup]='r3c1'>
             <mat-form-field>
-             <input matInput placeholder="Guardian Name" formControlName="guardian_name" required >
+             <input matInput placeholder="Guardian Name" formControlName="guardian_name">
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Guardian Phone" formControlName="guardian_phone" required>
+             <input matInput placeholder="Guardian Phone" formControlName="guardian_phone">
            </mat-form-field>
           </form>
         </div>
@@ -223,11 +235,11 @@
         <div class="col">
           <form [formGroup]='r3c2'>
             <mat-form-field>
-             <input matInput placeholder="Guardian Relation" formControlName="guardian_relation" required >
+             <input matInput placeholder="Guardian Relation" formControlName="guardian_relation">
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Guardian Occupation" formControlName="guardian_occ" required>
+             <input matInput placeholder="Guardian Occupation" formControlName="guardian_occ">
            </mat-form-field>
           </form>
         </div>
@@ -235,11 +247,11 @@
         <div class="col">
           <form [formGroup]='r3c3'>
             <mat-form-field>
-             <input matInput placeholder="Guardian Email" formControlName="guardian_email" required >
+             <input matInput placeholder="Guardian Email" formControlName="guardian_email">
            </mat-form-field>
            <br>
            <mat-form-field>
-             <input matInput placeholder="Guardian Address" formControlName="guardian_address" required>
+             <input matInput placeholder="Guardian Address" formControlName="guardian_address">
            </mat-form-field>
           </form>
         </div>
@@ -247,7 +259,7 @@
         <div class="col">
           <form [formGroup]='r3c4'>
             <mat-form-field>
-             <input matInput placeholder="Guardian Photo" formControlName="guardian_photo" required >
+             <input matInput placeholder="Guardian Photo" formControlName="guardian_photo">
            </mat-form-field>
           </form>
         </div>
@@ -255,6 +267,7 @@
     </mat-card-content>
 </mat-card>
 
+<ng-container *ngIf="selectedType==='Hosteller'">
 <br>
 
 <mat-card>
@@ -264,17 +277,33 @@
     <mat-card-content>
       <div class="row">
         <div class="col">
+          <mat-form-field>
+            <mat-label>Hostel</mat-label>
+            <select matNativeControl [(ngModel)]="selectedHostel" [ngModelOptions]="{standalone: true}" name="hostel">
 
+              <option *ngFor="let hostel of hostels" [value]="hostel">
+                {{hostel}}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
 
         <div class="col">
+          <mat-form-field>
+            <mat-label>Room</mat-label>
+            <select matNativeControl [(ngModel)]="selectedRoom" [ngModelOptions]="{standalone: true}" name="rooms">
 
+              <option *ngFor="let room of rooms" [value]="room">
+                {{room}}
+              </option>
+            </select>
+          </mat-form-field>
         </div>
       </div>
       </mat-card-content>
 
 </mat-card>
-
+</ng-container>
 <br>
 
 <mat-card>
@@ -289,7 +318,7 @@
           <mat-form-field>
             <mat-label>Id Proof</mat-label>
             <select matNativeControl [(ngModel)]="selectedParentIdProof" [ngModelOptions]="{standalone: true}" name="verifications">
-              <option value="" selected></option>
+
               <option *ngFor="let verification of verifications" [value]="verification">
                 {{verification}}
               </option>
@@ -299,7 +328,7 @@
           <mat-form-field>
             <mat-label>Address Proof</mat-label>
             <select matNativeControl [(ngModel)]="selectedParentAddressProof" [ngModelOptions]="{standalone: true}" name="verifications">
-              <option value="" selected></option>
+
               <option *ngFor="let verification of verifications" [value]="verification">
                 {{verification}}
               </option>
@@ -309,13 +338,13 @@
 
         <div class="col">
           <form [formGroup]='parent'>
-            <mat-form-field>
-             <input matInput placeholder="Upload" formControlName="pdoc1" required >
-           </mat-form-field>
+            <br>
+             <input placeholder="Upload" formControlName="pdoc1" type='file' required name="pdoc1" (change)="onFileChanged($event)" >
+             <a class='but' (click)='upload()'>Upload</a>
            <br>
-           <mat-form-field>
-             <input matInput placeholder="Upload" formControlName="pdoc2" required>
-           </mat-form-field>
+           <br>
+           <input placeholder="Upload" formControlName="pdoc2" type='file' required name="pdoc2" (change)="onFileChanged($event)" >
+           <a class='but' (click)='upload()'>Upload</a>
           </form>
         </div>
       </div>
@@ -327,7 +356,7 @@
           <mat-form-field>
             <mat-label>Id Proof</mat-label>
             <select matNativeControl [(ngModel)]="selectedGuardianIdProof" [ngModelOptions]="{standalone: true}" name="verifications">
-              <option value="" selected></option>
+
               <option *ngFor="let verification of verifications" [value]="verification">
                 {{verification}}
               </option>
@@ -337,7 +366,7 @@
           <mat-form-field>
             <mat-label>Address Proof</mat-label>
             <select matNativeControl [(ngModel)]="selectedGuardianAddressProof" [ngModelOptions]="{standalone: true}" name="verifications">
-              <option value="" selected></option>
+
               <option *ngFor="let verification of verifications" [value]="verification">
                 {{verification}}
               </option>
@@ -347,13 +376,13 @@
 
         <div class="col">
           <form [formGroup]='guardian'>
-            <mat-form-field>
-             <input matInput placeholder="Upload" formControlName="gdoc1" required >
-           </mat-form-field>
+            <br>
+             <input placeholder="Upload" formControlName="gdoc1" type='file' required name="gdoc1" (change)="onFileChanged($event)" >
+             <a class='but' (click)='upload()'>Upload</a>
            <br>
-           <mat-form-field>
-             <input matInput placeholder="Upload" formControlName="gdoc2" required>
-           </mat-form-field>
+           <br>
+           <input placeholder="Upload" formControlName="gdoc2" type='file' required name="gdoc2" (change)="onFileChanged($event)" >
+           <a class='but' (click)='upload()'>Upload</a>
           </form>
         </div>
       </div>
@@ -365,7 +394,7 @@
           <mat-form-field>
             <mat-label>Id Proof</mat-label>
             <select matNativeControl [(ngModel)]="selectedStudentIdProof" [ngModelOptions]="{standalone: true}" name="verifications">
-              <option value="" selected></option>
+
               <option *ngFor="let verification of verifications" [value]="verification">
                 {{verification}}
               </option>
@@ -375,7 +404,7 @@
           <mat-form-field>
             <mat-label>Address Proof</mat-label>
             <select matNativeControl [(ngModel)]="selectedStudentAddressProof" [ngModelOptions]="{standalone: true}" name="verifications">
-              <option value="" selected></option>
+
               <option *ngFor="let verification of verifications" [value]="verification">
                 {{verification}}
               </option>
@@ -385,15 +414,66 @@
 
         <div class="col">
           <form [formGroup]='student'>
-            <mat-form-field>
-             <input matInput placeholder="Upload" formControlName="sdoc1" required >
-           </mat-form-field>
+            <br>
+             <input placeholder="Upload" formControlName="sdoc1" type='file' required name="sdoc1" (change)="onFileChanged($event)" >
+             <a class='but' (click)='upload()'>Upload</a>
            <br>
-           <mat-form-field>
-             <input matInput placeholder="Upload" formControlName="sdoc2" required>
-           </mat-form-field>
+           <br>
+           <input placeholder="Upload" formControlName="sdoc2" type='file' required name="sdoc2" (change)="onFileChanged($event)" >
+           <a class='but' (click)='upload()'>Upload</a>
           </form>
         </div>
       </div>
       </mat-card-content>
+</mat-card>
+
+<br>
+
+<mat-card>
+  <p class="h3">Fee Structure</p>
+  <mat-divider></mat-divider>
+  <br>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <form [formGroup]="r4c1">
+          <mat-form-field>
+            <input matInput placeholder="Tution Fee (Per Term)" formControlName="tution_fee" required>
+          </mat-form-field>
+        </form>
+      </div>
+
+      <div class="col">
+        <form [formGroup]="r4c2">
+          <mat-form-field>
+            <input matInput placeholder="Hostel Fee" formControlName="hostel_fee" required>
+          </mat-form-field>
+        </form>
+      </div>
+
+      <div class="col">
+        <form [formGroup]="r4c3">
+          <mat-form-field>
+            <input matInput placeholder="Caution Deposit" formControlName="caution_deposit" required>
+          </mat-form-field>
+        </form>
+      </div>
+
+      <div class="col">
+        <form [formGroup]="r4c4">
+          <mat-form-field>
+            <input matInput placeholder="Concession" formControlName="consession" required>
+          </mat-form-field>
+        </form>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<br>
+<mat-card>
+  <div class="row">
+    <div class="col">
+      <a class="but" (click)='save()'>Save</a>
+    </div>
+  </div>
 </mat-card>

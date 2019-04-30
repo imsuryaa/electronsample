@@ -16,6 +16,21 @@
 .example-sidenav {
   width:15%;
   overflow: scroll;
-  background-color: #303030;
+  background-color: #424242;
   box-shadow: 0 0 2px 0 black
+}
+
+@media print {
+  .example-sidenav{
+    display: none;
+    width:1%;
+  }
+
+  .example-sidenav-content{
+    width: 100vw
+  }
+}
+
+mat-drawer{
+  overflow: scroll;
 }

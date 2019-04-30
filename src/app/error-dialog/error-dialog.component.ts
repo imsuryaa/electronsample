@@ -1,0 +1,31 @@
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MatSnackBar } from '@angular/material';
+import {MAT_DIALOG_DATA} from '@angular/material';
+@Component({
+  selector: 'app-error-dialog',
+  templateUrl: './error-dialog.component.html',
+  styleUrls: ['./error-dialog.component.css']
+})
+export class ErrorDialogComponent implements OnInit {
+
+  constructor(public dialogRef : MatDialogRef<ErrorDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  ngOnInit() {
+  }
+
+  onNoClick() {
+    this.dialogRef.close();
+    return false
+  }
+
+  onYesClick() {
+    if(this.data.action === 'delete-enquiry'){
+      console.log(this.data.enquiryId)
+
+    }
+    this.dialogRef.close();
+    return true
+  }
+
+}

@@ -1,9 +1,23 @@
 <div class="row">
   <div class="col">
     <mat-card>
-      <div id="time">
-        {{time | async | date:'medium'}}
+      <p class="display-4" style="color : #536DFE">Welcome</p>
+      <mat-divider></mat-divider>
+      <br>
+      <div class="row">
+        <div class="col">
+          <div id="time">
+            {{time | async | date}}
+          </div>
+        </div>
+
+        <div class="col" style='text-align:right'>
+          <div id="time" style="float:right">
+            {{time | async | date:'shortTime'}}
+          </div>
+        </div>
       </div>
+
     </mat-card>
   </div>
 </div>
@@ -13,21 +27,55 @@
 <div class="row">
   <div class="col">
     <mat-card>
-      <mat-card-title>Fees</mat-card-title>
+      <mat-card-title>Overview</mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <br>
+        <div class="row" style="text-align:center">
+          <div class="col">
+            <a routerLink="/view_student">
+            <p class="heads">Students</p>
+            <h6>{{students}}</h6>
+            </a>
+          </div>
 
-    </mat-card>
-  </div>
+          <div class="col">
+            <p class="heads">Staff</p>
+            <h6>74</h6>
+          </div>
+        </div>
+        <br>
+        <div class="row" style="text-align:center">
+          <div class="col">
+            <p class="heads">Day Scholars</p>
+            <h6>{{dayscholar}}</h6>
 
-  <div class="col">
-    <mat-card>
-      <mat-card-title>Attendance</mat-card-title>
-      <app-attendance></app-attendance>
+          </div>
+
+          <div class="col">
+            <p class="heads">Hostellers</p>
+            <h6>{{hosteller}}</h6>
+          </div>
+        </div>
+      </mat-card-content>
+      <br>
     </mat-card>
   </div>
 
   <div class="col">
     <mat-card>
       <mat-card-title>Admissions</mat-card-title>
+      <mat-divider></mat-divider>
+      <br>
+      <app-attendance></app-attendance>
+    </mat-card>
+  </div>
+
+  <div class="col">
+    <mat-card>
+      <mat-card-title>Attendance</mat-card-title>
+      <mat-divider></mat-divider>
+      <br>
       <app-admissions></app-admissions>
     </mat-card>
   </div>
@@ -39,12 +87,16 @@
   <div class="col">
     <mat-card>
       <mat-card-title>Exam Schedules</mat-card-title>
+      <mat-divider></mat-divider>
+      <br>
     </mat-card>
   </div>
 
   <div class="col">
     <mat-card>
       <mat-card-title>Dues</mat-card-title>
+      <mat-divider></mat-divider>
+      <br>
     </mat-card>
   </div>
 </div>

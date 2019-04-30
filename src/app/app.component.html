@@ -1,15 +1,15 @@
-<mat-toolbar style="background-color: #536DFE; color: white">
-  <button type="button" mat-button (click)="drawer.toggle()">
+<mat-toolbar style="background-color: #536DFE; color: white" *ngIf="path !== 'view'">
+<!--  <button type="button" mat-button (click)="draw.toggle()">
     Menu
-  </button>&nbsp;
-    <span style="font-size:20px">Abhyas School</span>
-    <span class="example-spacer"></span>
+  </button>&nbsp; -->
+  <span style="font-size:20px">Abhyas School</span>
+  <span class="example-spacer"></span>
 </mat-toolbar>
 <mat-drawer-container  class="example-container" autosize>
-  <mat-drawer #drawer opened='true' class="example-sidenav" mode="side">
+  <mat-drawer #draw opened='true' class="example-sidenav" mode="side" *ngIf="path !== 'view'">
     <mat-accordion>
       <mat-expansion-panel style="background-color:#e5dcdc; color:#2a2a2a">
-        <mat-expansion-panel-header style="background-color:#303030">
+        <mat-expansion-panel-header style="background-color:#424242">
           <mat-panel-title style="color:white">
             Home
           </mat-panel-title>
@@ -18,18 +18,120 @@
         <button mat-button style="text-align: left; width:100%" routerLink="/dashboard">Dashboard</button>
       </mat-expansion-panel>
     </mat-accordion>
+
     <mat-accordion>
       <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
-        <mat-expansion-panel-header style="background-color:#303030">
+        <mat-expansion-panel-header style="background-color:#424242">
           <mat-panel-title style="color:white">
-            Manage
+            Student
           </mat-panel-title>
         </mat-expansion-panel-header>
         <br>
-        <button mat-button style="text-align: left; width:100%" routerLink="/add_student">Add Students</button>
-        <button mat-button style="text-align: left; width:100%" routerLink="/view_student">Add Students</button>
+        <button mat-button style="text-align: left; width:100%" routerLink="/add_student">Student Admission</button>
+        <button mat-button style="text-align: left; width:100%" routerLink="/view_student">Student Information</button>
+        <button mat-button style="text-align: left; width:100%">Student Performance</button>
+        <button mat-button style="text-align: left; width:100%">Admission History</button>
       </mat-expansion-panel>
     </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#424242">
+          <mat-panel-title style="color:white">
+            Staff
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%" routerLink="/add_staff">Staff Admission</button>
+        <button mat-button style="text-align: left; width:100%" routerLink="/view_staff">Staff Information</button>
+        <button mat-button style="text-align: left; width:100%">Admission History</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#424242">
+          <mat-panel-title style="color:white">
+            Attendance
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%">Student Attendance</button>
+        <button mat-button style="text-align: left; width:100%">Staff Attendance</button>
+        <button mat-button style="text-align: left; width:100%">Attendance By Date</button>
+        <button mat-button style="text-align: left; width:100%">Report</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#424242">
+          <mat-panel-title style="color:white">
+            Fee Management
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%" routerLink="/generate_receipt">Generate Receipt</button>
+        <button mat-button style="text-align: left; width:100%" routerLink="/view_receipt">View/Pay Receipt</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#424242">
+          <mat-panel-title style="color:white">
+            Hostel
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%">Add Hostel</button>
+        <button mat-button style="text-align: left; width:100%">View Hostel</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#424242">
+          <mat-panel-title style="color:white">
+            Store
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%">Books</button>
+        <button mat-button style="text-align: left; width:100%">Uniforms</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#424242">
+          <mat-panel-title style="color:white">
+            Examinations
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%" routerLink='/add_examination'>New Examination</button>
+        <button mat-button style="text-align: left; width:100%">Results</button>
+        <button mat-button style="text-align: left; width:100%" routerLink='/view_examination'>Examination History</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel style="background-color: #e5dcdc; color:#2a2a2a">
+        <mat-expansion-panel-header style="background-color:#424242">
+          <mat-panel-title style="color:white">
+            Transport
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <br>
+        <button mat-button style="text-align: left; width:100%">Add Vehicle</button>
+        <button mat-button style="text-align: left; width:100%">Add Driver</button>
+        <button mat-button style="text-align: left; width:100%">Add Route</button>
+        <button mat-button style="text-align: left; width:100%">Track</button>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <br>
+    <br>
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -42,3 +144,4 @@
 
 </mat-drawer-container>
 <br>
+<app-print></app-print>
