@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-view-student',
@@ -11,7 +13,7 @@ export class ViewStudentComponent implements OnInit {
   selectedClass: any
   data: Object
   keys: string[]
-  constructor(private students : StudentService) {
+  constructor(private students : StudentService, private dialog : MatDialog) {
     var response = this.students.getAllStudents()
     response.subscribe(res => {
       this.data = res
@@ -25,11 +27,36 @@ export class ViewStudentComponent implements OnInit {
   view(){
     /*let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=480,height=640`;
     window.open('/view', 'Details', params)*/
-    var response = this.students.getStudentById({class:this.selectedClass})
+    var response = this.students.getStudentByClass({class:this.selectedClass})
     response.subscribe(res => {
-      this.data = res
-      this.keys = Object.keys(this.data)
+      if(this.isEmpty(res)){
+        this.openDialog('No Records Found')
+      }
+
+      else {
+        this.data = res
+        console.log(this.data)
+        this.keys = Object.keys(this.data)
+      }
     })
+  }
+
+  isEmpty(obj: Object) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+  }
+
+  openDialog(reason: string): void {
+    const dialogRef = this.dialog.open(ErrorDialogComponent, {
+      width: '400px', data: { action : 'delete', reason : reason},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

@@ -2,7 +2,7 @@
 <!--  <button type="button" mat-button (click)="draw.toggle()">
     Menu
   </button>&nbsp; -->
-  <span style="font-size:20px">Abhyas School</span>
+  <span style="font-size:20px">School Name</span>
   <span class="example-spacer"></span>
 </mat-toolbar>
 <mat-drawer-container  class="example-container" autosize>
@@ -56,9 +56,8 @@
           </mat-panel-title>
         </mat-expansion-panel-header>
         <br>
-        <button mat-button style="text-align: left; width:100%">Student Attendance</button>
-        <button mat-button style="text-align: left; width:100%">Staff Attendance</button>
-        <button mat-button style="text-align: left; width:100%">Attendance By Date</button>
+        <button mat-button style="text-align: left; width:100%" routerLink="/student_attendance">Student Attendance</button>
+        <button mat-button style="text-align: left; width:100%" routerLink="/staff_attendance">Staff Attendance</button>
         <button mat-button style="text-align: left; width:100%">Report</button>
       </mat-expansion-panel>
     </mat-accordion>

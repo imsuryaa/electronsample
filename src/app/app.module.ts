@@ -37,6 +37,8 @@ import { CreateExaminationComponent } from './create-examination/create-examinat
 import { ViewExaminationComponent } from './view-examination/view-examination.component';
 import { ViewStaffComponent } from './view-staff/view-staff.component';
 import { CreateStaffComponent } from './create-staff/create-staff.component';
+import { StudentAttendanceComponent } from './student-attendance/student-attendance.component';
+import { StaffAttendanceComponent } from './staff-attendance/staff-attendance.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,9 @@ import { CreateStaffComponent } from './create-staff/create-staff.component';
     CreateExaminationComponent,
     ViewExaminationComponent,
     ViewStaffComponent,
-    CreateStaffComponent
+    CreateStaffComponent,
+    StudentAttendanceComponent,
+    StaffAttendanceComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<p class="display-4">Student Attendance</p>
+<hr>
+<mat-card>
+  <p class="h5">Student Details</p>
+  <mat-divider></mat-divider>
+  <br>
+  <div class="row">
+    <div class="col">
+      <form [formGroup] = "r1c1">
+        <mat-form-field>
+         <input matInput placeholder="Admission No." formControlName="admission_no" required (change)="view()">
+       </mat-form-field>
+      </form>
+    </div>
+  </div>
+</mat-card>

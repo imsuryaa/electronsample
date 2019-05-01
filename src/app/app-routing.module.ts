@@ -10,6 +10,8 @@ import { CreateExaminationComponent } from './create-examination/create-examinat
 import { ViewExaminationComponent } from './view-examination/view-examination.component';
 import { ViewStaffComponent } from './view-staff/view-staff.component';
 import { CreateStaffComponent } from './create-staff/create-staff.component';
+import { StudentAttendanceComponent } from './student-attendance/student-attendance.component';
+import { StaffAttendanceComponent } from './staff-attendance/staff-attendance.component';
 
 const routes: Routes = [
   {path:'', redirectTo:'dashboard',pathMatch:'full'},
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path:'add_examination', component: CreateExaminationComponent},
   {path:'view_examination', component: ViewExaminationComponent},
   {path:'view_staff', component: ViewStaffComponent},
-  {path:'add_staff', component : CreateStaffComponent}
+  {path:'add_staff', component : CreateStaffComponent},
+  {path:'student_attendance',component:StudentAttendanceComponent},
+  {path:'staff_attendance', component:StaffAttendanceComponent}
 ];
 
 @NgModule({

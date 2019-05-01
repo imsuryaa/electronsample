@@ -30,6 +30,15 @@ export class StudentService {
     return this.http.post(this.url+'/api/student/getById',data)
   }
 
+  getStudentByClass(data: any){
+    const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers' : 'Origin, X-Requested-With, Content-Type, Accept'
+    })
+    return this.http.post(this.url+'/api/student/getByClass',data)
+  }
+
   getAllStudents(){
     const headers = new HttpHeaders({
     'Content-Type': 'application/json',
