@@ -180,57 +180,39 @@ export class CreateStudentComponent implements OnInit {
 
   save(){
 
-    var promise = new Promise((resolve,reject) => {
-      var ans = this.upload()
-      if(ans == true){
-        resolve()
+    var data = Object.assign({},
+      this.r1c1.value,
+      this.r1c1.value,
+      this.r1c2.value,
+      this.r1c3.value,
+      this.r1c4.value,
+      this.r2c1.value,
+      this.r2c2.value,
+      this.r2c3.value,
+      this.r2c4.value,
+      this.r3c1.value,
+      this.r3c2.value,
+      this.r3c3.value,
+      this.r3c4.value,
+      {
+        as_on: new Date(),
+        class: this.selectedClass,
+        consession: this.r4c4.value.consession,
+        gender:this.selectedGender,
+        hostel: this.selectedHostel,
+        house: this.selectedHouse,
+        room: this.selectedRoom,
+        section: this.selectedSection,
+        type: this.selectedType
       }
+    )
+    console.log(data)
 
-      else {
-        reject()
-      }
+    var response = this.students.createStudent(data)
+    response.subscribe(res => {
+      console.log(res)
+      this.openDialog('Admission Successful')
     })
-
-    promise.then(()=> {
-      var data = Object.assign({},
-        this.r1c1.value,
-        this.r1c1.value,
-        this.r1c2.value,
-        this.r1c3.value,
-        this.r1c4.value,
-        this.r2c1.value,
-        this.r2c2.value,
-        this.r2c3.value,
-        this.r2c4.value,
-        this.r3c1.value,
-        this.r3c2.value,
-        this.r3c3.value,
-        this.r3c4.value,
-        {
-          as_on: new Date(),
-          class: this.selectedClass,
-          consession: this.r4c4.value.consession,
-          gender:this.selectedGender,
-          hostel: this.selectedHostel,
-          house: this.selectedHouse,
-          room: this.selectedRoom,
-          section: this.selectedSection,
-          type: this.selectedType
-        }
-      )
-      console.log(data)
-
-      var response = this.students.createStudent(data)
-      response.subscribe(res => {
-        console.log(res)
-        this.openDialog('Admission Successful')
-      })
-    }).catch(()=> {
-
-    })
-
-
-
   }
 
   onFileChanged(event) {
@@ -258,8 +240,6 @@ export class CreateStudentComponent implements OnInit {
     if(event.target.name === 'pdoc2'){
       this.pdoc2 = event.target.files[0]
     }
-
-
   }
 
   upload(){
@@ -268,7 +248,7 @@ export class CreateStudentComponent implements OnInit {
 
     if(this.sdoc1 === undefined || this.sdoc2 === undefined || this.gdoc1 === undefined || this.gdoc2 === undefined || this.pdoc1 === undefined || this.pdoc2 === undefined){
       this.openDialog('Upload All Files')
-      return false
+      return 'false'
     }
 
     else {
@@ -304,10 +284,9 @@ export class CreateStudentComponent implements OnInit {
 
       console.log(uploadData)
       var resp = this.uploader.upload(uploadData)
-        resp.subscribe(res => {
-          console.log(res)
-          return true
-        })
+      resp.subscribe(res => {
+
+      })
     }
   }
 
