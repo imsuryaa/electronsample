@@ -48,7 +48,7 @@
           <td>{{data[key].mother_name}}</td>
           <td>{{data[key].guardian_name}}</td>
           <td>{{data[key].type}}</td>
-          <th><div style="padding:4px"><a class="but">Edit</a>&nbsp;<a class="but">Info</a>&nbsp;<a class="but" (click)='delete()'>Remove</a></div></th>
+          <th><div style="padding:4px"><a class="but">Edit</a>&nbsp;<a class="but" (click)='window(key)'>Info</a>&nbsp;<a class="but" (click)='delete()'>Remove</a>&nbsp;<a class="but">Promote</a></div></th>
         </tr>
       </ng-container>
       </table>

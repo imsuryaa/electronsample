@@ -248,7 +248,6 @@ export class CreateStudentComponent implements OnInit {
 
     if(this.sdoc1 === undefined || this.sdoc2 === undefined || this.gdoc1 === undefined || this.gdoc2 === undefined || this.pdoc1 === undefined || this.pdoc2 === undefined){
       this.openDialog('Upload All Files')
-      return 'false'
     }
 
     else {
@@ -285,7 +284,7 @@ export class CreateStudentComponent implements OnInit {
       console.log(uploadData)
       var resp = this.uploader.upload(uploadData)
       resp.subscribe(res => {
-
+        console.log(res)
       })
     }
   }
